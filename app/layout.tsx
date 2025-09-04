@@ -92,10 +92,6 @@ export default function RootLayout({
         />
         <meta name="config" content={JSON.stringify(getClientConfig())} />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -116,7 +112,6 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#062578" />
         <meta name="msapplication-TileColor" content="#2b5797" />
-        <meta name="theme-color" content="#ffffff" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
