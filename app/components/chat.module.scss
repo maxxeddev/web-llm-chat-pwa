@@ -57,17 +57,17 @@
 
   .chat-input-action {
     display: inline-flex;
-    border-radius: 20px;
-    font-size: 12px;
+    border-radius: 12px;
+    font-size: 14px;
     background-color: var(--white);
     color: var(--black);
     border: var(--border-in-light);
-    padding: 4px 10px;
+    padding: 8px 12px;
     animation: slide-in ease 0.3s;
     box-shadow: var(--card-shadow);
     transition: width ease 0.3s;
     align-items: center;
-    height: 16px;
+    height: 24px;
     width: var(--icon-width);
     overflow: hidden;
 
@@ -320,15 +320,15 @@
 
   .chat-input-action {
     display: inline-flex;
-    border-radius: 20px;
-    font-size: 12px;
+    border-radius: 12px;
+    font-size: 14px;
     background-color: var(--white);
     color: var(--black);
     border: var(--border-in-light);
-    padding: 4px 10px;
+    padding: 8px 12px;
     box-shadow: var(--card-shadow);
     align-items: center;
-    height: 16px;
+    height: 24px;
     overflow: hidden;
 
     .text {

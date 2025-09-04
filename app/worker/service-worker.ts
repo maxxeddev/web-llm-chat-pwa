@@ -1,7 +1,12 @@
 import { ServiceWorkerMLCEngineHandler } from "@mlc-ai/web-llm";
 import { defaultCache } from "@serwist/next/worker";
 import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";
-import { CacheFirst, ExpirationPlugin, Serwist } from "serwist";
+import {
+  CacheFirst,
+  ExpirationPlugin,
+  Serwist,
+  StaleWhileRevalidate,
+} from "serwist";
 
 declare const self: ServiceWorkerGlobalScope;
 const CHATGPT_NEXT_WEB_CACHE = "chatgpt-next-web-cache";
@@ -78,6 +83,18 @@ const serwist = new Serwist({
   navigationPreload: true,
   runtimeCaching: [
     ...defaultCache,
+    {
+      matcher: ({ url }) => url.pathname.endsWith("/v1/models"),
+      handler: new StaleWhileRevalidate({
+        cacheName: "mlc-llm-models-cache",
+        plugins: [
+          new ExpirationPlugin({
+            maxEntries: 1, // Only one models list
+            maxAgeSeconds: 7 * 24 * 60 * 60, // 1 week
+          }),
+        ],
+      }),
+    },
     {
       matcher: ({ sameOrigin, url: { pathname } }) =>
         sameOrigin && pathname === "/ping.txt",
